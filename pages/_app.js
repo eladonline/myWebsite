@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app';
 import React from 'react';
-import Layout from '../components/Layout';
-import '../style/core.scss';
+import Layout from 'components/Layout';
+import 'style/core.scss';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
