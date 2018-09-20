@@ -1,0 +1,25 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "src": "./src",
+          "static": "./static",
+          "style": "./style",
+          "components": "./src/components"
+        }
+      }
+    ],
+
+    [
+      "inline-import",
+      {
+        "extensions": [".css", ".png", ".jpg"]
+      }
+    ],
+    ["styled-components", { "ssr": true, "displayName": true, "preprocess": false }]
+  ]
+}
