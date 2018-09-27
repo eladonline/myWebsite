@@ -5,7 +5,6 @@ class Layout extends PureComponent {
   render() {
     return (
       <Fragment>
-        layout
         {this.props.query.children}
       </Fragment>
     );

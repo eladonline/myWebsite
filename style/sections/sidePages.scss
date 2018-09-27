@@ -1,0 +1,60 @@
+.sidePagesShare {
+  @extend %regular-text;
+  padding: 5em 0 8em 0;
+  @include grid(1em, center, center, minmax(80vw, 90vw), auto);
+  @include smd {
+    @include grid(1em, center, center, minmax(min-content, 600px), auto);
+  }
+  @include xl {
+    padding: 8em 0 8em 0;
+  }
+  color: white;
+}
+.about {
+  @extend .sidePagesShare;
+}
+
+.whyUs {
+  @extend .sidePagesShare;
+}
+
+.contact {
+  color: white;
+  padding: 5em 2em;
+  @include smd {
+    padding: 8em;
+  }
+  @include flex-column(center, center);
+  width: 100%;
+  h1 {
+    margin-bottom: 2em;
+    @extend %bold-header;
+  }
+  form {
+    @include flex-column(center, center);
+    width: 40%;
+    min-width: 240px;
+    @extend %regular-text;
+    input {
+      width: 100%;
+      padding: 0.5em;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid white;
+      margin-bottom: 2em;
+    }
+    textarea {
+      padding: 0.5em;
+      width: 100%;
+      background: transparent;
+      border: 1px solid grey;
+      margin-bottom: 2em;
+    }
+    button {
+      border: none;
+      background: rgb(168, 168, 168);
+      border-radius: 7px;
+      padding: 0.3em 0.5em;
+    }
+  }
+}

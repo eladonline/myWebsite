@@ -1,0 +1,26 @@
+/* Osans*/
+@font-face {
+  font-family: Osans-Bold;
+  font-display: auto;
+  src: url('../fonts/OpenSansHebrew-Bold.ttf');
+}
+@font-face {
+  font-family: Osans-BoldItalic;
+  font-display: auto;
+  src: url('../fonts/OpenSansHebrew-BoldItalic.ttf');
+}
+@font-face {
+  font-family: Osans-ExtraBold;
+  font-display: auto;
+  src: url('../fonts/OpenSansHebrew-ExtraBold.ttf');
+}
+@font-face {
+  font-family: Osans-Light;
+  font-display: auto;
+  src: url('../fonts/OpenSansHebrew-Light.ttf');
+}
+@font-face {
+  font-family: Osans-Regular;
+  font-display: auto;
+  src: url('../fonts/OpenSansHebrew-Regular.ttf');
+}

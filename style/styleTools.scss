@@ -1,0 +1,160 @@
+/////////////////
+// Mixins
+/////////////////
+
+////////////////////
+// flex-system
+////////////////////
+@mixin flex-row($justify: flex-start, $alignItems: flex-start) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $alignItems;
+}
+
+@mixin flex-column($justify: flex-start, $alignItems: flex-start) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $alignItems;
+}
+////////////////////
+// grid-system
+////////////////////
+
+@mixin grid(
+  $gap: 10px,
+  $justify: initial,
+  $alignItems: initial,
+  $template-cols: initial,
+  $template-rows: initial,
+  $areas: initial
+) {
+  display: grid;
+  grid-gap: $gap;
+  justify-content: $justify;
+  align-items: $alignItems;
+  grid-template-columns: $template-cols;
+  grid-template-rows: $template-rows;
+  grid-template-areas: $areas;
+}
+// ////////////
+// responsive
+// ////////////
+// lanscape phone
+@mixin xs {
+  @media (min-width: 566px) {
+    @content;
+  }
+}
+// tablets
+@mixin sm {
+  @media (min-width: 768px) {
+    @media screen and (min-height: 800px) {
+      @content;
+    }
+  }
+}
+// small desktops
+@mixin smd {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+// small desktop laptops lanscape tablets
+@mixin md {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+// wide screens
+@mixin lg {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+// medium desktop laptops
+@mixin xl {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
+// /////////////
+// selectors
+// ////////////
+%Osans-BoldItalic {
+  font-family: Osans-BoldItalic, helvetica;
+}
+%Osans-Bold {
+  font-family: Osans-Bold, helvetica;
+}
+%Osans-ExtraBold {
+  font-family: Osans-ExtraBold, helvetica;
+}
+%Osans-Light {
+  font-family: Osans-Light, helvetica;
+}
+%Osans-Regular {
+  font-family: Osans-Regular, helvetica;
+}
+// //////////////////
+// common
+// /////////////////
+%extra-header {
+  @extend %Osans-ExtraBold;
+  font-size: 1.8em;
+  @include smd {
+    font-size: 2em;
+  }
+  @include md {
+    font-size: 3em;
+  }
+}
+%bold-header {
+  @extend %Osans-Bold;
+  font-size: 1.2em;
+  @include smd {
+    font-size: 2em;
+  }
+}
+%light-header {
+  @extend %Osans-Light;
+  font-size: 1.5em;
+  @include smd {
+    font-size: 2.2em;
+  }
+}
+%regular-text {
+  @extend %Osans-Regular;
+  font-size: 1em;
+  @include smd {
+    font-size: 1.3em;
+  }
+}
+// //////////////////
+// Animation
+// /////////////////
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes down30 {
+  from {
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    transform: translate3d(0, 0px, 0);
+  }
+}
+@keyframes up30 {
+  from {
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    transform: translate3d(0, 0px, 0);
+  }
+}

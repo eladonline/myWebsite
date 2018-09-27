@@ -3,6 +3,11 @@ const { ANALYZE } = process.env;
 const withSass = require('@zeit/next-sass');
 
 module.exports = withSass({
+  exportPathMap: function() {
+    return {
+      '/': { page: '/' }
+    };
+  },
   webpack: function(config) {
     if (ANALYZE) {
       config.plugins.push(
@@ -13,6 +18,7 @@ module.exports = withSass({
         })
       );
     }
+
     config.module.rules.push({ test: /\.(ttf|eot|png|gif|woff|svg)$/, loader: 'file-loader' });
     return config;
   }
