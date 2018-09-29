@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import About from 'components/screens/About';
+import RouterLayout from 'components/routerLayout';
 
 export default () => (
-  <About />
+  <RouterLayout>
+    <About />
+  </RouterLayout>
 );

@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import HeroCarousle from 'src/components/sections/hero/HeroCarousle';
+import Section from 'src/components/sections/bodySection/bodySection';
 
 export default class Homepage extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <div>
-        <div>asasdas</div>
+      <div className='body-cont'>
+        <HeroCarousle />
+        <Section data={this.props.text}/>
       </div>
     );
   }
