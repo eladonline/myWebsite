@@ -45,13 +45,13 @@
 
     .dropdown-menu {
       li a {
-        color: white;
+        color: black;
       }
     } // the title of the dropdown
     > ul {
       padding-top: 1.5em;
       .loginNav a {
-        color: white;
+        color: black;
         height: 38px;
         font-size: 18px;
         @include flex-row(center, center);
@@ -61,9 +61,9 @@
         }
       }
       .loginNav a{
-        &[data-invers='true'] {
+        &[data-invers='0'] {
           .navbarItem {
-            color: black;
+            color: white;
           }
         }
       }

@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 const Items = p => (
   <Nav pullRight>
-    <NavItem className="loginNav" data-invers={p.invert !== 0}>
-      <Link href="contact">
+    <NavItem className="loginNav" data-invers={p.invert}>
+      <Link href="/contact" >
         <div className='navbarItem'>צור-קשר</div>
       </Link>
     </NavItem>{' '}
@@ -23,11 +23,9 @@ const Items = p => (
 export default Items;
 
 Items.defaultProps = {
-  user: 'unsigned',
-  invers: true
+  invers: 0
 };
 
 Items.propTypes = {
-  user: PropTypes.string,
-  invers: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  invers: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
 };

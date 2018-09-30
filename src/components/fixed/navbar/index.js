@@ -5,8 +5,8 @@ import Login from './Collapse/login';
 import LoggedIn from './Collapse/loggedIn';
 import PropTypes from 'prop-types';
 
-const brand = 'static/icon/we_factor_logo.png';
-const brand_invert = 'static/icon/we_factor_logo_invert.png';
+const brand = '/static/icon/we_factor_logo.png';
+const brand_invert = '/static/icon/we_factor_logo_invert.png';
 
 export default class MainNavbar extends Component {
   /**
@@ -39,9 +39,9 @@ export default class MainNavbar extends Component {
 }
 
 MainNavbar.defaultProps = {
-  invert: false
+  invert: 0
 };
 
 MainNavbar.propTypes = {
-  invert: PropTypes.bool
+  invert: PropTypes.number
 };

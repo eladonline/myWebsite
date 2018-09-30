@@ -7,7 +7,7 @@ import { hudiniElement } from 'components/helpers/helpers';
 export default class Layout extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { invert: false };
+    this.state = { invert: 0 };
   }
   componentDidMount() {
     const el = document.querySelector('#mainNavbar');
