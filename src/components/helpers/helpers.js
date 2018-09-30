@@ -12,14 +12,14 @@ export const picture = (component, aSet, uniqkey) => {
 };
 /**
  * @function hudiniNavbar
- * @argument {string} id
- * @argument {array} aColor
- * @argument {object} ref
+ * @argument {object} el the element
+ * @argument {array} value two value to switch between 
+ * @argument {bool} bool indicate when to switch
+ * @argument {string} sStyle the style
  * @summary change element background if page scrolled
  */
-export const hudiniElement = (el, aColor, bool, sStyle) => {
-  const styleType = sStyle || 'background';
-  bool ? (el.style[styleType] = aColor[0]) : (el.style[styleType] = aColor[1]);
+export const hudiniElement = (el, value, bool, sStyle = 'background') => {
+  bool ? (el.style[sStyle] = value[0]) : (el.style[sStyle] = value[1]);
 };
 
 export const nodeToArray = node => {
@@ -27,7 +27,7 @@ export const nodeToArray = node => {
   return nodesArray;
 };
 
-export const renderBlocks = (aBlock) => {
+export const renderBlocks = aBlock => {
   return aBlock.map(block => {
     return <p key={block.text}>{block.text}</p>;
   });

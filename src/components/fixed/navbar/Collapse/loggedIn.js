@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Items = p => (
   <Nav pullRight>
-    <NavItem className="loginNav" data-invers={p.invers}>
+    <NavItem className="loginNav" data-invers={p.invert !== 0}>
       <Link href="contact">
         <div className='navbarItem'>צור-קשר</div>
       </Link>

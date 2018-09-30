@@ -17,11 +17,9 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <Layout>
-        <Container>
-          <Component {...pageProps} />
-        </Container>
-      </Layout>
+      <Container>
+        <Component {...pageProps} />
+      </Container>
     );
   }
 }

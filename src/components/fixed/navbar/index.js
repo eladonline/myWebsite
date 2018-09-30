@@ -22,7 +22,7 @@ export default class MainNavbar extends Component {
    */
   isLoggedIn(user) {
     // 'Unsigned' Linked to private Layout
-    return user ? <LoggedIn user={user} /> : <Login />;
+    return user ? <LoggedIn invert={this.props.invert} /> : <Login />;
   }
 
   render() {
