@@ -7,10 +7,11 @@ export default class Homepage extends Component {
     super(props);
   }
   render() {
+    const {text} = this.props 
     return (
-      <div className='body-cont'>
+      <div className='body-cont' dir={text.dir}>
         <HeroCarousle />
-        <Section data={this.props.text}/>
+        <Section data={text}/>
       </div>
     );
   }

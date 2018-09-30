@@ -13,10 +13,10 @@ export default class SlideA extends Component {
   
   render() {
     const {cardA, cardB, cardC} = this.props.data.sections.bodySections.slideA;
-    const dir = this.props.data.dir
+    const {dir} = this.props.data
     
     return (
-      <div className="slideA">
+      <div className="slideA" dir={dir}>
         <SlideTemplate img={cardA.img} header={cardA.header} text={cardA.text} />
         <SlideTemplate
           img={cardB.img}
