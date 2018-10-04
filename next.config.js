@@ -5,7 +5,10 @@ const withSass = require('@zeit/next-sass');
 module.exports = withSass({
   exportPathMap: function() {
     return {
-      '/': { page: '/' }
+      '/': { page: '/' },
+      '/about': { page: '/about' },
+      '/whyUs': { page: '/whyUs' },
+      '/contact': { page: '/contact' }
     };
   },
   webpack: function(config) {

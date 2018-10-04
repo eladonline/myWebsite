@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {renderBlocks} from 'src/components/helpers/helpers'
+import Link from 'next/link';
 
 const solutions = 'static/image/solutions_x1.png';
 const decorated = 'static/image/decorated_x1.png';
@@ -10,21 +10,15 @@ const decoratedText = 'עיצוב נעים לעין ומותאם לנוחיות 
 const googlefriendlyText = 'מחקרים מראים שאתר מהיר גורם למשתמשים להשאר ולבחון את שירותי האתר';
 
 export default class SlideA extends Component {
-  
   render() {
-    const {cardA, cardB, cardC} = this.props.data.sections.bodySections.slideA;
-    const {dir} = this.props.data
-    
+    const { cardA, cardB, cardC } = this.props.data.sections.bodySections.slideA;
+    const { dir } = this.props.data;
+
     return (
       <div className="slideA" dir={dir}>
-        <SlideTemplate img={cardA.img} header={cardA.header} text={cardA.text} />
-        <SlideTemplate
-          img={cardB.img}
-          header={cardB.header}
-          invert={true}
-          text={cardB.text}
-        />
-        <SlideTemplate img={cardC.img} header={cardC.header} text={cardC.text} />
+        <SlideTemplate img={cardA.img} header={cardA.header} text={cardA.text} link='solutions' />
+        <SlideTemplate img={cardB.img} header={cardB.header} invert={true} text={cardB.text} link='decorated' />
+        <SlideTemplate img={cardC.img} header={cardC.header} text={cardC.text} link='optimized' />
       </div>
     );
   }
@@ -32,10 +26,12 @@ export default class SlideA extends Component {
 
 const SlideTemplate = p => {
   return (
-    <div className="slide-item" data-invert={p.invert}>
-      <img src={p.img} alt="promo" />
-      <header>{p.header}</header>
-      <p>{p.text}</p>
-    </div>
+    <Link href={p.link}>
+      <div className="slide-item" data-invert={p.invert}>
+        <img src={p.img} alt="promo" />
+        <header>{p.header}</header>
+        <p>{p.text}</p>
+      </div>
+    </Link>
   );
 };

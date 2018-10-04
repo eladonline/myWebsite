@@ -71,7 +71,7 @@
   @include md {
     max-width: none;
 
-    @include grid(3em, center, start, 980px, auto auto auto);
+    @include grid(3em, center, start, 90vw, auto auto auto);
   }
   color: white;
   header {

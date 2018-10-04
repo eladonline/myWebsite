@@ -29,6 +29,6 @@ export const nodeToArray = node => {
 
 export const renderBlocks = aBlock => {
   return aBlock.map(block => {
-    return <p key={block.text}>{block.text}</p>;
+    return block.bold ?<span className='bold' key={block.text}>{block.text}</span> :<p key={block.text}>{block.text}</p>;
   });
 };

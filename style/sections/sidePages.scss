@@ -10,13 +10,10 @@
   }
   color: white;
 }
-.about {
+.about,.whyUs, .decorated, .solutions, .optimized {
   @extend .sidePagesShare;
 }
 
-.whyUs {
-  @extend .sidePagesShare;
-}
 
 .contact {
   color: white;
