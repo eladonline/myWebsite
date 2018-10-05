@@ -11,9 +11,12 @@ export default class Layout extends PureComponent {
   }
   componentDidMount() {
     const el = document.querySelector('#mainNavbar');
+    const brand = document.querySelector('.navbar-brand');
     if (window) {
       document.addEventListener('scroll', () => {
         hudiniElement(el, ['transparent', 'rgb(241, 241, 241)'], !window.scrollY);
+        hudiniElement(brand, ['80px', '65px'], !window.scrollY, 'height' );
+        hudiniElement(brand, ['200px', '160px'], !window.scrollY, 'width' );
         this.setState({ invert: window.scrollY });
       });
     }

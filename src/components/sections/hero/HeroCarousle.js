@@ -48,7 +48,7 @@ export default class HeroCarousle extends React.PureComponent {
               'tzuk2'
             )}
 
-            <Overlay h1="אני גדול ותופס את העיניים" h2={'הדבר הראשון שלקוח רואה זה הכי חשוב'} />
+            <Overlay h1="אתר בנוי למכירה" h2={'בניית אתרים'} />
           </Carousel.Item>
         </Carousel>
       </div>

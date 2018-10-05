@@ -10,7 +10,7 @@
 .slideA .slide-item header, #mainNavbar .navbar-collapse > ul .loginNav a, .footer p > div {
   font-family: Osans-Light, helvetica; }
 
-.slideA .slide-item p, .slideB .slideB-text-cont, .sidePagesShare, .about, .whyUs, .contact form {
+.slideA .slide-item p, .slideB .slideB-text-cont, .sidePagesShare, .about, .whyUs, .decorated, .solutions, .optimized, .contact form {
   font-family: Osans-Regular, helvetica; }
 
 #hero_main_container .carousel-inner .item .hero-overlay h1 {
@@ -34,10 +34,10 @@
     .slideA .slide-item header {
       font-size: 2.2em; } }
 
-.slideA .slide-item p, .slideB .slideB-text-cont, .sidePagesShare, .about, .whyUs, .contact form {
+.slideA .slide-item p, .slideB .slideB-text-cont, .sidePagesShare, .about, .whyUs, .decorated, .solutions, .optimized, .contact form {
   font-size: 1em; }
   @media (min-width: 768px) {
-    .slideA .slide-item p, .slideB .slideB-text-cont, .sidePagesShare, .about, .whyUs, .contact form {
+    .slideA .slide-item p, .slideB .slideB-text-cont, .sidePagesShare, .about, .whyUs, .decorated, .solutions, .optimized, .contact form {
       font-size: 1.3em; } }
 
 @keyframes fadeIn {
@@ -243,7 +243,7 @@
       grid-gap: 3em;
       justify-content: center;
       align-items: start;
-      grid-template-columns: 980px;
+      grid-template-columns: 90vw;
       grid-template-rows: auto auto auto;
       grid-template-areas: initial; } }
   .slideB img {
@@ -297,7 +297,7 @@
     .footer p:hover {
       transform: scale(1.2); }
 
-.sidePagesShare, .about, .whyUs {
+.sidePagesShare, .about, .whyUs, .decorated, .solutions, .optimized {
   padding: 5em 0 8em 0;
   display: grid;
   grid-gap: 1em;
@@ -308,7 +308,7 @@
   grid-template-areas: initial;
   color: white; }
   @media (min-width: 768px) {
-    .sidePagesShare, .about, .whyUs {
+    .sidePagesShare, .about, .whyUs, .decorated, .solutions, .optimized {
       display: grid;
       grid-gap: 1em;
       justify-content: center;
@@ -317,7 +317,7 @@
       grid-template-rows: auto;
       grid-template-areas: initial; } }
   @media (min-width: 1600px) {
-    .sidePagesShare, .about, .whyUs {
+    .sidePagesShare, .about, .whyUs, .decorated, .solutions, .optimized {
       padding: 8em 0 8em 0; } }
 
 .contact {

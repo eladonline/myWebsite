@@ -12,17 +12,20 @@
   transition: 0.8s ease;
   border: none;
   border-radius: 0;
-  box-shadow: 0px 0px 10px rgb(65, 65, 65);
+  // box-shadow: 0px 0px 10px rgb(65, 65, 65);
   .container {
     margin: 0;
+    @include flex-row(space-between, center);
     width: 100%;
     padding: 0 15px;
-    background: rgb(88, 88, 88);
+    background: rgb(129, 94, 94);
     @include smd {
       background: transparent;
     }
   }
   .navbar-brand {
+    transition: 0.6s ease;
+    position: relative;
     width: 150px;
     height: 70px;
     @include smd {
@@ -40,7 +43,8 @@
   .navbar-collapse {
     width: 100%; // the dropdown open box menu
     padding: 0;
-
+    display: flex !important;
+    @include flex-row(flex-end, center);
     overflow: hidden;
 
     .dropdown-menu {
@@ -49,7 +53,6 @@
       }
     } // the title of the dropdown
     > ul {
-      padding-top: 1.5em;
       .loginNav a {
         color: black;
         height: 38px;
@@ -60,7 +63,7 @@
           font-weight: 900;
         }
       }
-      .loginNav a{
+      .loginNav a {
         &[data-invers='0'] {
           .navbarItem {
             color: white;

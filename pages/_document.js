@@ -15,12 +15,11 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta charSet="utf-8" />
-          <meta name="description" content="web designed" />
+          <meta name="description" content="בניית אתרים" />
           <meta name="author" content="elad BA" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link rel="stylesheet" href="static/css/fonts.css"/>
           <style>{`body { margin: 0 }`}</style>
-          <title>myWebsite</title>
+          <title>we factor</title>
         </Head>
         <body >
           <Main />

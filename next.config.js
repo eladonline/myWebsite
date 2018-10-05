@@ -8,7 +8,10 @@ module.exports = withSass({
       '/': { page: '/' },
       '/about': { page: '/about' },
       '/whyUs': { page: '/whyUs' },
-      '/contact': { page: '/contact' }
+      '/contact': { page: '/contact' },
+      '/solutions': { page: '/solutions' },
+      '/decorated': { page: '/decorated' },
+      '/optimized': { page: '/optimized' },
     };
   },
   webpack: function(config) {
