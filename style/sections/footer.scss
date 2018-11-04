@@ -2,7 +2,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 1em;
+  padding: .5em;
   @include grid(.5em, center, center, auto auto, auto);
   text-align: center;
   :nth-last-child(1) {
