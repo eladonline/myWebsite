@@ -1,4 +1,4 @@
-((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\whyUs.js"],{
+((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\index.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -28475,9 +28475,9 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/whyUs.js":
+/***/ "./pages/index.js":
 /*!************************!*\
-  !*** ./pages/whyUs.js ***!
+  !*** ./pages/index.js ***!
   \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -28486,9 +28486,9 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _src_components_screens_WhyUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/components/screens/WhyUs */ "./src/components/screens/WhyUs.js");
+/* harmony import */ var _src_components_screens_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/components/screens/Home */ "./src/components/screens/Home.js");
 /* harmony import */ var _src_components_routerLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/components/routerLayout */ "./src/components/routerLayout.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\pages\\whyUs.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\pages\\index.js";
 
 
 
@@ -28499,7 +28499,7 @@ var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\pages\\whyUs.js";
       lineNumber: 6
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_screens_WhyUs__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_screens_Home__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -28523,7 +28523,7 @@ var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\pages\\whyUs.js";
           next.router.update(r, Component)
         }
       }
-    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/whyUs")
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/")
   
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
@@ -29079,20 +29079,21 @@ var Routed = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(func
 
 /***/ }),
 
-/***/ "./src/components/screens/WhyUs.js":
-/*!*****************************************!*\
-  !*** ./src/components/screens/WhyUs.js ***!
-  \*****************************************/
+/***/ "./src/components/screens/Home.js":
+/*!****************************************!*\
+  !*** ./src/components/screens/Home.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WhyUs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Homepage; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/helpers */ "./src/components/helpers/helpers.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\screens\\WhyUs.js";
+/* harmony import */ var _sections_hero_HeroCarousle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sections/hero/HeroCarousle */ "./src/components/sections/hero/HeroCarousle.js");
+/* harmony import */ var _sections_bodySection_bodySection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sections/bodySection/bodySection */ "./src/components/sections/bodySection/bodySection.js");
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\screens\\Home.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29115,47 +29116,382 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var WhyUs =
+
+var Homepage =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(WhyUs, _Component);
+  _inherits(Homepage, _Component);
 
-  function WhyUs() {
-    _classCallCheck(this, WhyUs);
+  function Homepage(props) {
+    _classCallCheck(this, Homepage);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(WhyUs).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Homepage).call(this, props));
   }
 
-  _createClass(WhyUs, [{
+  _createClass(Homepage, [{
     key: "render",
     value: function render() {
-      var text = this.props.text.whyUs;
-      var dir = this.props.text.dir;
+      var text = this.props.text;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "whyUs",
-        dir: dir,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "body-cont",
+        dir: text.dir,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 12
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sections_hero_HeroCarousle__WEBPACK_IMPORTED_MODULE_1__["default"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 13
         },
         __self: this
-      }, text.header)), Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["renderBlocks"])(text.textBlocks));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sections_bodySection_bodySection__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        data: text,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        },
+        __self: this
+      }));
     }
   }]);
 
-  return WhyUs;
+  return Homepage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./src/components/sections/bodySection/bodySection.js":
+/*!************************************************************!*\
+  !*** ./src/components/sections/bodySection/bodySection.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Section; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _slideA__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slideA */ "./src/components/sections/bodySection/slideA.js");
+/* harmony import */ var _slideB__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slideB */ "./src/components/sections/bodySection/slideB.js");
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\bodySection\\bodySection.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Section =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Section, _Component);
+
+  function Section() {
+    _classCallCheck(this, Section);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Section).apply(this, arguments));
+  }
+
+  _createClass(Section, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "Section",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_slideA__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        data: this.props.data,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_slideB__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        data: this.props.data,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        },
+        __self: this
+      }));
+    }
+  }]);
+
+  return Section;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./src/components/sections/bodySection/slideA.js":
+/*!*******************************************************!*\
+  !*** ./src/components/sections/bodySection/slideA.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SlideA; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\bodySection\\slideA.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var solutions = 'static/image/solutions_x1.png';
+var decorated = 'static/image/decorated_x1.png';
+var googlefriendly = 'static/image/fast_and_googlefriendly_x1.png';
+var solutionsText = 'אתר רספונסיבי מותאם למחשב ולפלאפון כאחד';
+var decoratedText = 'עיצוב נעים לעין ומותאם לנוחיות המשתמש כך שהלקוח ירצה לטייל באתר';
+var googlefriendlyText = 'מחקרים מראים שאתר מהיר גורם למשתמשים להשאר ולבחון את שירותי האתר';
+
+var SlideA =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SlideA, _Component);
+
+  function SlideA() {
+    _classCallCheck(this, SlideA);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SlideA).apply(this, arguments));
+  }
+
+  _createClass(SlideA, [{
+    key: "render",
+    value: function render() {
+      var _this$props$data$sect = this.props.data.sections.bodySections.slideA,
+          cardA = _this$props$data$sect.cardA,
+          cardB = _this$props$data$sect.cardB,
+          cardC = _this$props$data$sect.cardC;
+      var dir = this.props.data.dir;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "slideA",
+        dir: dir,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SlideTemplate, {
+        img: cardA.img,
+        header: cardA.header,
+        text: cardA.text,
+        link: "solutions",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SlideTemplate, {
+        img: cardB.img,
+        header: cardB.header,
+        invert: true,
+        text: cardB.text,
+        link: "decorated",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SlideTemplate, {
+        img: cardC.img,
+        header: cardC.header,
+        text: cardC.text,
+        link: "optimized",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        },
+        __self: this
+      }));
+    }
+  }]);
+
+  return SlideA;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+var SlideTemplate = function SlideTemplate(p) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: p.link,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "slide-item",
+    "data-invert": p.invert,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: p.img,
+    alt: "promo",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  }, p.header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    },
+    __self: this
+  }, p.text)));
+};
+
+/***/ }),
+
+/***/ "./src/components/sections/bodySection/slideB.js":
+/*!*******************************************************!*\
+  !*** ./src/components/sections/bodySection/slideB.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SlideB; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/helpers */ "./src/components/helpers/helpers.js");
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\bodySection\\slideB.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var picture_x3 = 'static/image/weOffer.png';
+var picture_x1 = 'static/image/weOffer_x1.png';
+var picture_x2 = 'static/image/weOffer_x2.png';
+var p1 = 'את העיצוב הנוכחי של האתר + התאמה של האתר לעסק אותו אתה מפרסם ';
+var p2 = 'עזרה בקניית דומיין והעלאה של האתר לאוויר';
+var p3 = 'חוסכים לך בלאגן ומעלים את האתר לאחסון אותו קנית';
+
+var SlideB =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SlideB, _Component);
+
+  function SlideB() {
+    _classCallCheck(this, SlideB);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SlideB).apply(this, arguments));
+  }
+
+  _createClass(SlideB, [{
+    key: "render",
+    value: function render() {
+      var data = this.props.data.sections.bodySections.slideB;
+      var dir = this.props.data.dir;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "slideB",
+        dir: dir,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        },
+        __self: this
+      }, data.header, " "), Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: data.img.x3,
+        alt: "promo",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: this
+      }), [data.img.x3, data.img.x2, data.img.x1], 'yadaim'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "slideB-text-cont",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        },
+        __self: this
+      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["renderBlocks"])(data.textBlocks)));
+    }
+  }]);
+
+  return SlideB;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -29264,6 +29600,179 @@ function (_PureComponent) {
 
 /***/ }),
 
+/***/ "./src/components/sections/hero/HeroCarousle.js":
+/*!******************************************************!*\
+  !*** ./src/components/sections/hero/HeroCarousle.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HeroCarousle; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/helpers */ "./src/components/helpers/helpers.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\hero\\HeroCarousle.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var background_1_x1 = 'static/image/backgrounds_1_x1.png';
+var background_1_x2 = 'static/image/backgrounds_1_x2.png';
+var background_1 = 'static/image/backgrounds_1.png';
+var background_2 = 'static/image/backgrounds_2.png';
+var background_2x1 = 'static/image/backgrounds_2_x1.png';
+var background_2x2 = 'static/image/backgrounds_2_x2.png';
+
+var Overlay = function Overlay(p) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "hero-overlay",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, p.h1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }, p.h2));
+};
+
+var HeroCarousle =
+/*#__PURE__*/
+function (_React$PureComponent) {
+  _inherits(HeroCarousle, _React$PureComponent);
+
+  function HeroCarousle() {
+    _classCallCheck(this, HeroCarousle);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(HeroCarousle).apply(this, arguments));
+  }
+
+  _createClass(HeroCarousle, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "hero_main_container",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"], {
+        pauseOnHover: false,
+        controls: false,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        },
+        __self: this
+      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        alt: "profile",
+        src: background_1,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        },
+        __self: this
+      }), [background_1, background_1_x2, background_1_x1], 'tzuk'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
+        h1: "\u05D1\u05E8\u05D5\u05DA \u05D4\u05D1\u05D0 \u05DC\u05D0\u05EA\u05E8 \u05D4\u05D7\u05D3\u05E9 \u05E9\u05DC\u05DA!",
+        h2: "\u05D4\u05DC\u05E7\u05D5\u05D7\u05D5\u05EA \u05E9\u05DC\u05DA \u05DE\u05D7\u05DB\u05D9\u05DD!",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        },
+        __self: this
+      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        alt: "profile",
+        src: background_2,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        },
+        __self: this
+      }), [background_2, background_2x2, background_2x1], 'hamaniot'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
+        h1: "\u05DB\u05DC \u05EA\u05DE\u05D5\u05E0\u05D4 \u05E9\u05E2\u05D5\u05D1\u05E8\u05EA \u05D0\u05E4\u05E9\u05E8 \u05DC\u05E4\u05E8\u05E1\u05DD \u05DE\u05E9\u05D4\u05D5 \u05D0\u05D7\u05E8",
+        h2: "\u05D0\u05D6 \u05DC\u05DE\u05D4 \u05DC\u05D0 \u05DC\u05EA\u05E4\u05D5\u05E1 \u05D0\u05EA \u05DB\u05D5\u05DC\u05DD!",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        },
+        __self: this
+      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        alt: "profile",
+        src: background_1,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46
+        },
+        __self: this
+      }), [background_1, background_1_x2, background_1_x1], 'tzuk2'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
+        h1: "\u05D0\u05EA\u05E8 \u05D1\u05E0\u05D5\u05D9 \u05DC\u05DE\u05DB\u05D9\u05E8\u05D4",
+        h2: 'בניית אתרים',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 51
+        },
+        __self: this
+      }))));
+    }
+  }]);
+
+  return HeroCarousle;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/text/main.json":
 /*!****************************!*\
   !*** ./src/text/main.json ***!
@@ -29275,15 +29784,15 @@ module.exports = {"dir":"rtl","hero":{"extraHead":{"a":"!ברוך הבא לאת�
 
 /***/ }),
 
-/***/ 10:
+/***/ 6:
 /*!******************************!*\
-  !*** multi ./pages/whyUs.js ***!
+  !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__NEXT_REGISTER_PAGE('/whyUs', function() {
-module.exports = __webpack_require__(/*! ./pages/whyUs.js */"./pages/whyUs.js");
+__NEXT_REGISTER_PAGE('/', function() {
+module.exports = __webpack_require__(/*! ./pages/index.js */"./pages/index.js");
 
 return { page: module.exports.default }});
 
@@ -29300,5 +29809,5 @@ module.exports = dll_5d62d38be3592dca3a42;
 
 /***/ })
 
-},[[10,"static/runtime/webpack.js"]]]));;
-//# sourceMappingURL=whyUs.js.map
+},[[6,"static/runtime/webpack.js"]]]));;
+//# sourceMappingURL=index.js.map
