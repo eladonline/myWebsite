@@ -10,7 +10,7 @@ export default class Footer extends PureComponent {
         <Link href='/whyUs'>
           <p>למה דווקא אנחנו</p>
         </Link>
-        <div> &copy; כל הזכויות שמורות לחברת we FactoR</div>
+        <div> &copy; כל הזכויות שמורות לחברת We factoR</div>
       </footer>
     );
   }

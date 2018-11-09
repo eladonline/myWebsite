@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { picture } from 'src/components/helpers/helpers';
 import {renderBlocks} from 'src/components/helpers/helpers'
 
-const picture_x3 = 'static/image/weOffer.png';
-const picture_x1 = 'static/image/weOffer_x1.png';
-const picture_x2 = 'static/image/weOffer_x2.png';
+// const picture_x3 = 'static/image/weOffer.png';
+// const picture_x1 = 'static/image/weOffer_x1.png';
+// const picture_x2 = 'static/image/weOffer_x2.png';
 
-const p1 = 'את העיצוב הנוכחי של האתר + התאמה של האתר לעסק אותו אתה מפרסם ';
-const p2 = 'עזרה בקניית דומיין והעלאה של האתר לאוויר';
-const p3 = 'חוסכים לך בלאגן ומעלים את האתר לאחסון אותו קנית';
+// const p1 = 'את העיצוב הנוכחי של האתר + התאמה של האתר לעסק אותו אתה מפרסם ';
+// const p2 = 'עזרה בקניית דומיין והעלאה של האתר לאוויר';
+// const p3 = 'חוסכים לך בלאגן ומעלים את האתר לאחסון אותו קנית';
 
 export default class SlideB extends Component {
   render() {  

@@ -30,9 +30,8 @@ export default class MainNavbar extends Component {
       <Navbar collapseOnSelect id="mainNavbar">
         <Navbar.Header>
           <Brand image={this.props.invert  ?brand_invert :brand} />
-          <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse>{this.isLoggedIn('elad+1@committed.co.il')}</Navbar.Collapse>
+        {this.isLoggedIn('elad+1@committed.co.il')}
       </Navbar>
     );
   }

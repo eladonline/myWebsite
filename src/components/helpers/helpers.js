@@ -11,7 +11,7 @@ export const picture = (component, aSet, uniqkey) => {
   );
 };
 /**
- * @function hudiniNavbar
+ * @function hudiniElement
  * @argument {object} el the element
  * @argument {array} value two value to switch between 
  * @argument {bool} bool indicate when to switch

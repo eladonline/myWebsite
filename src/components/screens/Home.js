@@ -10,7 +10,7 @@ export default class Homepage extends Component {
     const {text} = this.props 
     return (
       <div className='body-cont' dir={text.dir}>
-        <HeroCarousle />
+        <HeroCarousle data={text.hero} />
         <Section data={text}/>
       </div>
     );
