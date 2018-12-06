@@ -32,7 +32,7 @@ export default class HeroCarousle extends React.PureComponent {
     return extraHead.map((headers, i) => {
       return (
         <Carousel.Item key={`jumbotron-${i}`}>
-          {picture(<img alt="profile" src={img[i][2]} />, img[i].reverse(), `jumbo${i}`)}
+          {picture(<img alt="profile" src={img[i][2]} />, img[i], `jumbo${i}`)}
           <Overlay h1={headers.h1} h2={headers.h2} />
         </Carousel.Item>
       );
