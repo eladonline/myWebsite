@@ -8,19 +8,19 @@
     ],
     "img": [
       [
-        "static/image/caroulseSlides/first/backgrounds_1_x1.jpg",
+        "static/image/caroulseSlides/first/backgrounds_1_x3.jpg",
         "static/image/caroulseSlides/first/backgrounds_1_x2.jpg",
-        "static/image/caroulseSlides/first/backgrounds_1_x3.jpg"
+        "static/image/caroulseSlides/first/backgrounds_1_x1.jpg"
       ],
       [
-        "static/image/caroulseSlides/second/backgrounds_2_x1.jpg",
+        "static/image/caroulseSlides/second/backgrounds_2_x3.jpg",
         "static/image/caroulseSlides/second/backgrounds_2_x2.jpg",
-        "static/image/caroulseSlides/second/backgrounds_2_x3.jpg"
+        "static/image/caroulseSlides/second/backgrounds_2_x1.jpg"
       ],
       [
-        "static/image/caroulseSlides/third/backgrounds_3_x1.jpg",
+        "static/image/caroulseSlides/third/backgrounds_3_x3.jpg",
         "static/image/caroulseSlides/third/backgrounds_3_x2.jpg",
-        "static/image/caroulseSlides/third/backgrounds_3_x3.jpg"
+        "static/image/caroulseSlides/third/backgrounds_3_x1.jpg"
       ]
     ]
   },

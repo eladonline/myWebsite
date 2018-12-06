@@ -6735,8 +6735,6 @@ function isLocal(href) {
   return !url.host || url.protocol === origin.protocol && url.host === origin.host;
 }
 
-var warnLink = (0, _utils.execOnce)(_utils.warn);
-
 function memoizedFormatUrl(formatUrl) {
   var lastHref = null;
   var lastAs = null;
@@ -6906,7 +6904,8 @@ function (_Component) {
 }(_react.Component);
 
 if (true) {
-  // This module gets removed by webpack.IgnorePlugin
+  var warn = (0, _utils.execOnce)(console.error); // This module gets removed by webpack.IgnorePlugin
+
   var exact = __webpack_require__(/*! prop-types-exact */ "./node_modules/prop-types-exact/build/index.js");
 
   Link.propTypes = exact({
@@ -6921,7 +6920,7 @@ if (true) {
       var value = props[propName];
 
       if (typeof value === 'string') {
-        warnLink("Warning: You're using a string directly inside <Link>. This usage has been deprecated. Please add an <a> tag as child of <Link>");
+        warn("Warning: You're using a string directly inside <Link>. This usage has been deprecated. Please add an <a> tag as child of <Link>");
       }
 
       return null;
@@ -7346,13 +7345,6 @@ var _utils = __webpack_require__(/*! ../utils */ "./node_modules/next/dist/lib/u
 var _ = __webpack_require__(/*! ./ */ "./node_modules/next/dist/lib/router/index.js");
 
 /* global __NEXT_DATA__ */
-var historyUnavailableWarning = (0, _utils.execOnce)(function () {
-  (0, _utils.warn)("Warning: window.history is not available.");
-});
-var historyMethodWarning = (0, _utils.execOnce)(function (method) {
-  (0, _utils.warn)("Warning: window.history.".concat(method, " is not available"));
-});
-
 var Router =
 /*#__PURE__*/
 function () {
@@ -7682,14 +7674,16 @@ function () {
     value: function changeState(method, url, as) {
       var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
-      if (typeof window.history === 'undefined') {
-        historyUnavailableWarning();
-        return;
-      }
+      if (true) {
+        if (typeof window.history === 'undefined') {
+          console.error("Warning: window.history is not available.");
+          return;
+        }
 
-      if (typeof window.history[method] === 'undefined') {
-        historyMethodWarning(method);
-        return;
+        if (typeof window.history[method] === 'undefined') {
+          console.error("Warning: window.history.".concat(method, " is not available"));
+          return;
+        }
       }
 
       if (method !== 'pushState' || (0, _utils.getURL)() !== as) {
@@ -8241,17 +8235,14 @@ function shallowEquals(a, b) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.warn = warn;
 exports.execOnce = execOnce;
-exports.deprecated = deprecated;
-exports.printAndExit = printAndExit;
 exports.getDisplayName = getDisplayName;
 exports.isResSent = isResSent;
 exports.loadGetInitialProps = loadGetInitialProps;
@@ -8261,14 +8252,6 @@ exports.getURL = getURL;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js"));
 
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js"));
-
-var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
-
-function warn(message) {
-  if (true) {
-    console.error(message);
-  }
-}
 
 function execOnce(fn) {
   var _this = this;
@@ -8285,42 +8268,6 @@ function execOnce(fn) {
       fn.apply(_this, args);
     }
   };
-}
-
-function deprecated(fn, message) {
-  // else is used here so that webpack/uglify will remove the code block depending on the build environment
-  if (false) {} else {
-    var warned = false;
-
-    var newFn = function newFn() {
-      if (!warned) {
-        warned = true;
-        console.error(message);
-      }
-
-      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      return fn.apply(this, args);
-    }; // copy all properties
-
-
-    (0, _assign.default)(newFn, fn);
-    return newFn;
-  }
-}
-
-function printAndExit(message) {
-  var code = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-  if (code === 0) {
-    console.log(message);
-  } else {
-    console.error(message);
-  }
-
-  process.exit(code);
 }
 
 function getDisplayName(Component) {
@@ -8418,7 +8365,6 @@ function getURL() {
   var origin = getLocationOrigin();
   return href.substring(origin.length);
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -9337,201 +9283,6 @@ module.exports = function shimAssign() {
 	);
 	return polyfill;
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
-  !*** ./node_modules/process/browser.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
 
 
 /***/ }),
@@ -28488,7 +28239,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _src_components_screens_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/components/screens/Home */ "./src/components/screens/Home.js");
 /* harmony import */ var _src_components_routerLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/components/routerLayout */ "./src/components/routerLayout.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\pages\\index.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\pages\\index.js";
 
 
 
@@ -28546,7 +28297,7 @@ var _text_main_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webp
 /* harmony import */ var _fixed_navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fixed/navbar */ "./src/components/fixed/navbar/index.js");
 /* harmony import */ var _sections_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sections/footer/footer */ "./src/components/sections/footer/footer.js");
 /* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers/helpers */ "./src/components/helpers/helpers.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\Layout.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\Layout.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -28665,7 +28416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\fixed\\navbar\\Brand\\Brand.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\fixed\\navbar\\Brand\\Brand.js";
 
 
 
@@ -28721,7 +28472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\fixed\\navbar\\Collapse\\loggedIn.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\fixed\\navbar\\Collapse\\loggedIn.js";
 
 
 
@@ -28782,7 +28533,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\fixed\\navbar\\Collapse\\login.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\fixed\\navbar\\Collapse\\login.js";
 
 
 
@@ -28831,7 +28582,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Collapse_loggedIn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Collapse/loggedIn */ "./src/components/fixed/navbar/Collapse/loggedIn.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\fixed\\navbar\\index.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\fixed\\navbar\\index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -28927,19 +28678,7 @@ function (_Component) {
           lineNumber: 32
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        },
-        __self: this
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        },
-        __self: this
-      }, this.isLoggedIn('elad+1@committed.co.il')));
+      })), this.isLoggedIn('elad+1@committed.co.il'));
     }
   }]);
 
@@ -28971,7 +28710,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderBlocks", function() { return renderBlocks; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\helpers\\helpers.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\helpers\\helpers.js";
 
 var picture = function picture(component, aSet, uniqkey) {
   var aMedia = ['(min-width: 1600px)', '(min-width: 768px)', '(min-width: 0px)'];
@@ -28996,7 +28735,7 @@ var picture = function picture(component, aSet, uniqkey) {
   }, sources, component);
 };
 /**
- * @function hudiniNavbar
+ * @function hudiniElement
  * @argument {object} el the element
  * @argument {array} value two value to switch between 
  * @argument {bool} bool indicate when to switch
@@ -29049,7 +28788,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Layout */ "./src/components/Layout.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\routerLayout.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\routerLayout.js";
 
 
 
@@ -29093,7 +28832,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _sections_hero_HeroCarousle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sections/hero/HeroCarousle */ "./src/components/sections/hero/HeroCarousle.js");
 /* harmony import */ var _sections_bodySection_bodySection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sections/bodySection/bodySection */ "./src/components/sections/bodySection/bodySection.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\screens\\Home.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\screens\\Home.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29141,6 +28880,7 @@ function (_Component) {
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sections_hero_HeroCarousle__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        data: text.hero,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 13
@@ -29178,7 +28918,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _slideA__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slideA */ "./src/components/sections/bodySection/slideA.js");
 /* harmony import */ var _slideB__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slideB */ "./src/components/sections/bodySection/slideB.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\bodySection\\bodySection.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\sections\\bodySection\\bodySection.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29262,7 +29002,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\bodySection\\slideA.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\sections\\bodySection\\slideA.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29283,13 +29023,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
-var solutions = 'static/image/solutions_x1.png';
-var decorated = 'static/image/decorated_x1.png';
-var googlefriendly = 'static/image/fast_and_googlefriendly_x1.png';
-var solutionsText = 'אתר רספונסיבי מותאם למחשב ולפלאפון כאחד';
-var decoratedText = 'עיצוב נעים לעין ומותאם לנוחיות המשתמש כך שהלקוח ירצה לטייל באתר';
-var googlefriendlyText = 'מחקרים מראים שאתר מהיר גורם למשתמשים להשאר ולבחון את שירותי האתר';
+ // const solutions = 'static/image/solutions_x1.png';
+// const decorated = 'static/image/decorated_x1.png';
+// const googlefriendly = 'static/image/fast_and_googlefriendly_x1.jpg';
+// const solutionsText = 'אתר רספונסיבי מותאם למחשב ולפלאפון כאחד';
+// const decoratedText = 'עיצוב נעים לעין ומותאם לנוחיות המשתמש כך שהלקוח ירצה לטייל באתר';
+// const googlefriendlyText = 'מחקרים מראים שאתר מהיר גורם למשתמשים להשאר ולבחון את שירותי האתר';
 
 var SlideA =
 /*#__PURE__*/
@@ -29412,7 +29151,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/helpers */ "./src/components/helpers/helpers.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\bodySection\\slideB.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\sections\\bodySection\\slideB.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29434,13 +29173,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-var picture_x3 = 'static/image/weOffer.png';
-var picture_x1 = 'static/image/weOffer_x1.png';
-var picture_x2 = 'static/image/weOffer_x2.png';
-var p1 = 'את העיצוב הנוכחי של האתר + התאמה של האתר לעסק אותו אתה מפרסם ';
-var p2 = 'עזרה בקניית דומיין והעלאה של האתר לאוויר';
-var p3 = 'חוסכים לך בלאגן ומעלים את האתר לאחסון אותו קנית';
+ // const picture_x3 = 'static/image/weOffer.png';
+// const picture_x1 = 'static/image/weOffer_x1.png';
+// const picture_x2 = 'static/image/weOffer_x2.png';
+// const p1 = 'את העיצוב הנוכחי של האתר + התאמה של האתר לעסק אותו אתה מפרסם ';
+// const p2 = 'עזרה בקניית דומיין והעלאה של האתר לאוויר';
+// const p3 = 'חוסכים לך בלאגן ומעלים את האתר לאחסון אותו קנית';
 
 var SlideB =
 /*#__PURE__*/
@@ -29512,7 +29250,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\footer\\footer.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\sections\\footer\\footer.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29589,7 +29327,7 @@ function (_PureComponent) {
           lineNumber: 13
         },
         __self: this
-      }, " \xA9 \u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA \u05DC\u05D7\u05D1\u05E8\u05EA we FactoR"));
+      }, " \xA9 \u05DB\u05DC \u05D4\u05D6\u05DB\u05D5\u05D9\u05D5\u05EA \u05E9\u05DE\u05D5\u05E8\u05D5\u05EA \u05DC\u05D7\u05D1\u05E8\u05EA We factoR"));
     }
   }]);
 
@@ -29614,7 +29352,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/helpers */ "./src/components/helpers/helpers.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-var _jsxFileName = "C:\\Users\\elad\\Desktop\\reactNext\\src\\components\\sections\\hero\\HeroCarousle.js";
+var _jsxFileName = "C:\\Users\\elad\\Desktop\\myWebsite\\src\\components\\sections\\hero\\HeroCarousle.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -29636,32 +29374,34 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-var background_1_x1 = 'static/image/backgrounds_1_x1.png';
-var background_1_x2 = 'static/image/backgrounds_1_x2.png';
-var background_1 = 'static/image/backgrounds_1.png';
-var background_2 = 'static/image/backgrounds_2.png';
-var background_2x1 = 'static/image/backgrounds_2_x1.png';
-var background_2x2 = 'static/image/backgrounds_2_x2.png';
+ // const background_1_x1 = 'static/image/background_1_x1.jpg';
+// const background_1_x2 = 'static/image/background_1_x2.jpg';
+// const background_1_x3 = 'static/image/background_1_x3.jpg';
+// const background_2 = 'static/image/backgrounds_2_x3.jpg';
+// const background_2x1 = 'static/image/backgrounds_2_x1.jpg';
+// const background_2x2 = 'static/image/backgrounds_2_x2.jpg';
+// const background_3_x3 = 'static/image/backgrounds_3_x3.jpg';
+// const background_3_x1 = 'static/image/backgrounds_3_x1.jpg';
+// const background_3_x2 = 'static/image/backgrounds_3_x2.jpg';
 
 var Overlay = function Overlay(p) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "hero-overlay",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 19
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 24
     },
     __self: this
   }, p.h1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 25
     },
     __self: this
   }, p.h2));
@@ -29679,13 +29419,46 @@ function (_React$PureComponent) {
   }
 
   _createClass(HeroCarousle, [{
+    key: "parseData",
+    value: function parseData(data) {
+      var extraHead = data.extraHead,
+          img = data.img;
+      return extraHead.map(function (headers, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
+          key: "jumbotron-".concat(i),
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 34
+          },
+          __self: this
+        }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          alt: "profile",
+          src: img[i][2],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 35
+          },
+          __self: this
+        }), img[i], "jumbo".concat(i)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
+          h1: headers.h1,
+          h2: headers.h2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36
+          },
+          __self: this
+        }));
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var data = this.props.data;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "hero_main_container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 44
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"], {
@@ -29693,76 +29466,10 @@ function (_React$PureComponent) {
         controls: false,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 45
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28
-        },
-        __self: this
-      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        alt: "profile",
-        src: background_1,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 30
-        },
-        __self: this
-      }), [background_1, background_1_x2, background_1_x1], 'tzuk'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
-        h1: "\u05D1\u05E8\u05D5\u05DA \u05D4\u05D1\u05D0 \u05DC\u05D0\u05EA\u05E8 \u05D4\u05D7\u05D3\u05E9 \u05E9\u05DC\u05DA!",
-        h2: "\u05D4\u05DC\u05E7\u05D5\u05D7\u05D5\u05EA \u05E9\u05DC\u05DA \u05DE\u05D7\u05DB\u05D9\u05DD!",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 34
-        },
-        __self: this
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36
-        },
-        __self: this
-      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        alt: "profile",
-        src: background_2,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        },
-        __self: this
-      }), [background_2, background_2x2, background_2x1], 'hamaniot'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
-        h1: "\u05DB\u05DC \u05EA\u05DE\u05D5\u05E0\u05D4 \u05E9\u05E2\u05D5\u05D1\u05E8\u05EA \u05D0\u05E4\u05E9\u05E8 \u05DC\u05E4\u05E8\u05E1\u05DD \u05DE\u05E9\u05D4\u05D5 \u05D0\u05D7\u05E8",
-        h2: "\u05D0\u05D6 \u05DC\u05DE\u05D4 \u05DC\u05D0 \u05DC\u05EA\u05E4\u05D5\u05E1 \u05D0\u05EA \u05DB\u05D5\u05DC\u05DD!",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 42
-        },
-        __self: this
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Carousel"].Item, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44
-        },
-        __self: this
-      }, Object(_helpers_helpers__WEBPACK_IMPORTED_MODULE_1__["picture"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        alt: "profile",
-        src: background_1,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
-        },
-        __self: this
-      }), [background_1, background_1_x2, background_1_x1], 'tzuk2'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overlay, {
-        h1: "\u05D0\u05EA\u05E8 \u05D1\u05E0\u05D5\u05D9 \u05DC\u05DE\u05DB\u05D9\u05E8\u05D4",
-        h2: 'בניית אתרים',
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 51
-        },
-        __self: this
-      }))));
+      }, this.parseData(data)));
     }
   }]);
 
@@ -29780,7 +29487,7 @@ function (_React$PureComponent) {
 /*! exports provided: dir, hero, sections, about, whyUs, decorated, solutions, optimized, default */
 /***/ (function(module) {
 
-module.exports = {"dir":"rtl","hero":{"extraHead":{"a":"!ברוך הבא לאתר החדש שלך","b":"כל תמונה שעוברת אפשר לפרסם משהו אחר","c":"אני גדול ותופס את העיניים"},"subHead":{"a":"הלקוחות שלך מחכים","b":"?!אז למה לא לתפוס את כולם","c":"הדבר הראשון שלקוח רואה זה הכי חשוב"},"img":{"a":{"x1":"static/image/backgrounds_1x1.png","x2":"static/image/backgrounds_1x2.png","x3":"static/image/backgrounds_1.png"},"b":{"x1":"static/image/backgrounds_2_x1.png","x2":"static/image/backgrounds_2_x2.png","x3":"static/image/backgrounds_2.png"},"c":{"x1":"static/image/backgrounds_1x1.png","x2":"static/image/backgrounds_1x2.png","x3":"static/image/backgrounds_1.png"}}},"sections":{"bodySections":{"slideA":{"cardA":{"header":"הפתרונות שלנו הלקוחות שלך","img":"static/image/solutions_x1.png","text":"אתר רספונסיבי מותאם למחשב ולפלאפון כאחד"},"cardB":{"header":"אתר מעוצב מקצועי ונעים למשתמש","img":"static/image/decorated_x1.png","text":"עיצוב נעים לעין ומותאם לנוחיות המשתמש כך שהמשתמש לא ידלג על האתר"},"cardC":{"header":"מהיר ומקודם בגוגל","img":"static/image/fast_and_googlefriendly_x1.png","text":"מחקרים מראים שאתר מהיר גורם למשתמשים להשאר ולבחון את שירותי האתר"}},"slideB":{"header":"אז מה בעצם אנחנו מציעים ? ","img":{"x1":"static/image/weOffer_x1.png","x2":"static/image/weOffer_x2.png","x3":"static/image/weOffer.png"},"textBlocks":[{"text":"את העיצוב הנוכחי של האתר + התאמה של האתר לעסק אותו אתה מפרסם"},{"text":"עזרה בקניית דומיין והעלאה של האתר לאוויר"},{"text":"חוסכים לך בלאגן ומעלים את האתר לאחסון אותו קנית"}]}}},"about":{"header":"קצת עלינו","textBlocks":[{"text":" חברת we factor מתמחים בבניית אתרים והתאמתם UX/UI."},{"text":"עוסקים בדפי נחיתה ואתרי תדמית."},{"text":"המטרות עליהן אנו מתמקדים בבניית אתר הן:"},{"text":"ביצועים:","bold":true},{"text":"מהירות התגובה של האתר מהרגע בו הלקוח נכנס לאתר ועד שמוצג לו התוכן הראשוני. כמו כן גם בשיטוט בין דפי האתר אנו מוודאים כי הדפים עולים במהירות תודות לסביבת הפיתוח החדשה בה אנו משתמשים."},{"text":"UX ממשק משתמש:","bold":true},{"text":" הרעיון העקרי שבו אנו צריכים לדבוק כאשר אנו בונים אתר הוא: keep it simple  צריך תמיד לזכור, משתמשים רוצים אתר פשוט ושירגיש טבעי בלי לחשוב יותר מדי."},{"text":"UI חווית משתמש","bold":true},{"text":"משתמש שמקבל חוויה עשירה מאתר נוטה לסמוך על מה שכתוב בו ולראותו כמקצועי.  לכן חשוב שהאתר יהיה חלק ונעים לעין וגם יתן ערך מוסף למשתמש כמו אנימציות קטנות.. "},{"text":"קידום","bold":true},{"text":"אנו דואגים לעמוד בקריטריונים שגוגל מציב על מנת להופיע כמה שיותר ראשונים בתוצאות החיפוש. "}]},"whyUs":{"header":"למה דווקא אנחנו!","textBlocks":[{"text":"הדבר שהכי מייחד אותנו משאר העוסקים במלאכה, הוא שאצלנו אתה רואה את האתר מוכן לפני שאתה בכלל קונה אותו, וחוסך זמן וכסף."},{"text":"לא צריך לחשוב יותר מדי, אנחנו כבר יודעים כיצד לגרום לדברים לעבוד ואיך ליצור אתרים שמושכים את העין, אתה רק תבחר עיצוב שמתאים לך."},{"text":"איך זה עובד? פשוט מאוד, אתה אוהב את האתר שאתה כרגע גולש בו? מצויין אז הוא שלך! דבר איתנו נתאים לך אותו, נשנה לצבעים שאתה אוהב ושיאפיינו את סגנון השירות אותו אתה נותן.  "},{"text":"לאחר מכן נעזור לך בקניית דומיין לאתר שלך, וגם נעלה לך אותו לרשת כך שאנשים יוכלו לראות אותו ואתה תוכל להתחיל להרוויח כסף."}]},"decorated":{"header":" עיצוב מרשים ונוח","textBlocks":[{"text":"בעיצוב אתרים חשוב להשקיע לא רק בתוכן ובעיצוב עצמו אלא בערך מוסף, דוגמת אנימציות קצרות ועיצוב חי ואינטרקטיבי."},{"text":"אנו דואגים לא רק להביא אתר יפה לעין אלא להביא חוויה למשתמש , ככל שחווית המשתמש תהיה טובה יותר הסיכוי כי הוא יבחר לקחת שירות מהאתר גבוה יותר."},{"text":"בסופו של דבר יש המון אתרים שנותנים שירותים מסויימים אבל רק אלו שיעניינו את המשתמש ויראו אמינים יזכו בו."}]},"solutions":{"header":"פתרונות ניהול ושיווק","textBlocks":[{"text":"שיווק:","bold":true},{"text":" לאחר שרכשת את האתר צריך לאפיין אותו מכמה בחינות לצרכים שלך ושל הלקוחות שלך, לרוב השירותים יש צבע שמזוהה איתם אסוציאטיבית, לדוגמא אתר של מאמן כושר לרוב יהיה רקע שחור וכתב לבן (נייק אדידס) או ירוק (אקולוגי בריא.. ), אתר צלילות ישלב תכלת ולבן וכו.."},{"text":"כאן נכנסת היכולת שלנו בשיווק, אנו נעזור לך לבחור את הצבעים המתאימים לאתר ולשירות שלך, לאחר מכן תצטרך תמונות, אלו יכולות להיות תמונות שאתה תביא או תמונות שנעזור לך למצוא באינטרנט רק כלל חשוב! התמונות חייבות להיות מאושרות לשימוש מסחרי חופשי"},{"text":"ניהול:","bold":true},{"text":"לאחר שהאתר יעלה לאוויר לאחר זמן תרצה בוודאי לעשות בו שינויים כמו שינוי שעות פעילות או כתובת, לכך יש שני דרכים: "},{"text":"1.  אני משלם לכם כי אני לא רוצה להתעסק בתחום שלא שייך אלי: "},{"text":"אתה צודק, אחת לשבוע תוכל לבקש מאיתנו לבצע שינוי בפרטי האתר, אפילו להוסיף דף חדש או תוכן. אנחנו נבצע כל שינוי והוספה שתרצה בתשלום משתלם ונוח "},{"text":"2. לעשות שינוי זה לא קשה אני אעשה זאת לבד  "},{"text":"כאשר מדובר בשינוי תוכן קיים אתה צודק בהחלט זה אכן פשוט, אנו נלמד אותך כיצד לבצע שינוי בתוכן ותוכל לעשות זאת ללא צורך בעזרה או תשלום נוסף "}]},"optimized":{"header":"מהיר ומקודם במנועי חיפוש לדוגמת גוגל","textBlocks":[{"text":"בזכות הטכנולוגיה בה אנו בונים את האתר, היא מקנה לו מהירות ביצועים שמגיעה לציון 100 בבדיקת ביצועים לאתר ע'י גוגל."},{"text":"בנוסף על כך בזכות המקצועיות שלנו, אנו יודעים להתאים את האתר למנועי חיפוש כך שיהיה לו את הפוטנציאל הטוב ביותר להופיע בראש תוצאות החיפוש."},{"text":"טייל קצת באתר תבחן את המהירות שלו"}]}};
+module.exports = {"dir":"rtl","hero":{"extraHead":[{"h1":"ברוך הבא לאתר החדש שלך !","h2":"הלקוחות שלך מחכים"},{"h1":"האתר עומד למכירה","h2":" מבצע לזמן מוגבל רק 800 ש''ח"},{"h1":"מחיר חסר תקדים","h2":"לאתר מקצועי וברמה גבוהה"}],"img":[["static/image/caroulseSlides/first/backgrounds_1_x3.jpg","static/image/caroulseSlides/first/backgrounds_1_x2.jpg","static/image/caroulseSlides/first/backgrounds_1_x1.jpg"],["static/image/caroulseSlides/second/backgrounds_2_x3.jpg","static/image/caroulseSlides/second/backgrounds_2_x2.jpg","static/image/caroulseSlides/second/backgrounds_2_x1.jpg"],["static/image/caroulseSlides/third/backgrounds_3_x3.jpg","static/image/caroulseSlides/third/backgrounds_3_x2.jpg","static/image/caroulseSlides/third/backgrounds_3_x1.jpg"]]},"sections":{"bodySections":{"slideA":{"cardA":{"header":"הפתרונות שלנו הלקוחות שלך","img":"static/image/solutions_x1.png","text":"אתר רספונסיבי ומהיר מותאם למחשב ולפלאפון כאחד"},"cardB":{"header":"אתר מעוצב מקצועי ונעים למשתמש","img":"static/image/decorated_x1.png","text":"עיצוב נעים לעין ומותאם לנוחיות המשתמש נראה מקצועי ומושך"},"cardC":{"header":"מהיר ומקודם בגוגל","img":"static/image/fast_and_googlefriendly_x1.jpg","text":"בנוי בצורה בכי טובה לקידום במנועי החיפוש של גוגל"}},"slideB":{"header":"אז מה בעצם אנחנו מציעים ? ","img":{"x1":"static/image/weOffer_x1.png","x2":"static/image/weOffer_x2.png","x3":"static/image/weOffer.png"},"textBlocks":[{"text":"את העיצוב הנוכחי של האתר והתאמה של האתר לעסק שלך"},{"text":"אנחנו נעלה לך את השרת לאוויר"},{"text":"ניתן לך כלי לבדיקת נתוני כניסה לאתר שלך בגוגל ללא עלות נוספת"}]}}},"about":{"header":"קצת עלינו","textBlocks":[{"text":" חברת we factor מתמחים בבניית אתרים והתאמתם UX/UI."},{"text":"עוסקים בדפי נחיתה ואתרי תדמית."},{"text":"המטרות עליהן אנו מתמקדים בבניית אתר הן:"},{"text":"ביצועים:","bold":true},{"text":"מהירות התגובה של האתר מהרגע בו הלקוח נכנס לאתר ועד שמוצג לו התוכן הראשוני. כמו כן גם בשיטוט בין דפי האתר אנו מוודאים כי הדפים עולים במהירות תודות לסביבת הפיתוח החדשה בה אנו משתמשים."},{"text":"UX ממשק משתמש:","bold":true},{"text":" הרעיון העקרי שבו אנו צריכים לדבוק כאשר אנו בונים אתר הוא: keep it simple  צריך תמיד לזכור, משתמשים רוצים אתר פשוט ושירגיש טבעי בלי לחשוב יותר מדי."},{"text":"UI חווית משתמש","bold":true},{"text":"משתמש שמקבל חוויה עשירה מאתר נוטה לסמוך על מה שכתוב בו ולראותו כמקצועי.  לכן חשוב שהאתר יהיה חלק ונעים לעין וגם יתן ערך מוסף למשתמש כמו אנימציות קטנות.. "},{"text":"קידום","bold":true},{"text":"אנו דואגים לעמוד בקריטריונים שגוגל מציב על מנת להופיע כמה שיותר ראשונים בתוצאות החיפוש. "}]},"whyUs":{"header":"למה דווקא אנחנו!","textBlocks":[{"text":"הדבר שהכי מייחד אותנו משאר העוסקים במלאכה, הוא שאצלנו אתה רואה את האתר מוכן לפני שאתה בכלל קונה אותו, וחוסך זמן וכסף."},{"text":"לא צריך לחשוב יותר מדי, אנחנו כבר יודעים כיצד לגרום לדברים לעבוד ואיך ליצור אתרים שמושכים את העין, אתה רק תבחר עיצוב שמתאים לך."},{"text":"איך זה עובד? פשוט מאוד, אתה אוהב את האתר שאתה כרגע גולש בו? מצויין אז הוא שלך! דבר איתנו נתאים לך אותו, נשנה לצבעים שאתה אוהב ושיאפיינו את סגנון השירות אותו אתה נותן.  "},{"text":"לאחר מכן נעזור לך בקניית דומיין לאתר שלך, וגם נעלה לך אותו לרשת כך שאנשים יוכלו לראות אותו ואתה תוכל להתחיל להרוויח כסף."},{"text":"חשוב להבהיר שהמוצר שאנו מוכרים הוא את האתר בלבד לכן יש לקחת בחשבון שעל מנת שהאתר יעלה לאינטרנט יש צורך לקנות דומיין ואחסון אתרים בתשלום נוסף  או לחילופין להתייעץ איתנו יש לנו כמה חלופות חינמיות."}]},"decorated":{"header":" עיצוב מרשים ונוח","textBlocks":[{"text":"בעיצוב אתרים חשוב להשקיע לא רק בתוכן ובעיצוב עצמו אלא בערך מוסף, דוגמת אנימציות קצרות ועיצוב חי ואינטרקטיבי."},{"text":"אנו דואגים לא רק להביא אתר יפה לעין אלא להביא חוויה למשתמש , ככל שחווית המשתמש תהיה טובה יותר הסיכוי כי הוא יבחר לקחת שירות מהאתר גבוה יותר."},{"text":"בסופו של דבר יש המון אתרים שנותנים שירותים מסויימים אבל רק אלו שיעניינו את המשתמש ויראו אמינים יזכו בו."}]},"solutions":{"header":"פתרונות ניהול ושיווק","textBlocks":[{"text":"שיווק:","bold":true},{"text":" לאחר שרכשת את האתר צריך לאפיין אותו מכמה בחינות לצרכים שלך ושל הלקוחות שלך. לרוב השירותים יש צבע שמזוהה איתם אסוציאטיבית, לדוגמא: אתר של מאמן כושר לרוב יהיה רקע שחור וכתב לבן (נייק אדידס) או ירוק (אקולוגי בריא.. ), אתר צלילות ישלב תכלת ולבן וכו.."},{"text":"כאן נכנסת היכולת שלנו בשיווק, אנו נעזור לך לבחור את הצבעים המתאימים לאתר ולשירות שלך, לאחר מכן תצטרך תמונות, אלו יכולות להיות תמונות שאתה תביא או תמונות שנעזור לך למצוא באינטרנט רק כלל חשוב! התמונות חייבות להיות מאושרות לשימוש מסחרי חופשי"},{"text":"ניהול:","bold":true},{"text":"לאחר שהאתר יעלה לאוויר לאחר זמן תרצה בוודאי לעשות בו שינויים כמו שינוי שעות פעילות או כתובת. "},{"text":"לכן,"},{"text":"אחת לשבוע תוכל לבקש מאיתנו לבצע שינוי בפרטי האתר, אפילו להוסיף דף חדש או תוכן, אנחנו נבצע כל שינוי והוספה שתרצה בתשלום משתלם ונוח"}]},"optimized":{"header":"מהיר ומקודם במנועי חיפוש לדוגמת גוגל","textBlocks":[{"text":"בזכות הטכנולוגיה בה אנו בונים את האתר, היא מקנה לו מהירות ביצועים שמגיעה עד לציון 100 בבדיקת ביצועים לאתר ע'י גוגל."},{"text":"בנוסף על כך, בזכות המקצועיות שלנו אנו יודעים להתאים את האתר למנועי חיפוש כך שיהיה לו את הפוטנציאל הטוב ביותר להופיע בראש תוצאות החיפוש."},{"text":"טייל קצת באתר תבחן את המהירות שלו."}]}};
 
 /***/ }),
 
